@@ -1,0 +1,31 @@
+<%= erb :_navigation %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-10 col-lg-offset-1 text-center">
+				<div><h1>Welcome </h1></div>
+				<div class="u-login-info"><h4><%= @user.login %></h4></div>
+				<div class="post-edit">
+					<a href="/users/<%= @user.id %>/edit">
+						<button class="btn btn-success post-edit">Edit info</button>
+					</a>
+				</div>
+				<div class="map-button">
+					<a href="/users/<%= @user.id %>/directions">
+						<button class="btn btn-success post-edit btn-large">Get direction</button>
+					</a>
+				</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<%= erb :_footer %>
+
+
+
+
+
+

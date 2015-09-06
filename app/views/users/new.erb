@@ -1,0 +1,73 @@
+<div class= "form-error">
+  <% if @form_error %>
+  <div id="form_error"><%= @form_error %></div>
+  <% end %>
+</div>
+
+
+
+<div id="register_form">
+  <form class="form-horizontal" action='/users/new' method="post">
+    <fieldset>
+
+      <div id="legend">
+        <legend class="">Register</legend>
+      </div>
+
+      <div class="control-group">
+        <!-- validation error handling -->
+        <% if @user.errors[:login].any? %>
+          <div style="color: red;"><%= @user.errors[:login].first %></div>
+        <% end %>
+
+        <!-- username -->
+        <label class="control-label"  for="username">Username</label>
+        <div class="controls">
+          <input type="text" id="username" name="login" placeholder="" class="input-xlarge">
+        </div>
+      </div>
+
+
+      <div class="control-group">
+        <!-- validation error handling -->
+        <% if @user.errors[:password].any? %>
+          <div style="color: red;"><%= @user.errors[:password].first %></div>
+        <% end %>
+        
+        <!-- Password-->
+        <label class="control-label" for="password">Password</label>
+        <div class="controls">
+          <input type="password" id="password" name="password" placeholder="" class="input-xlarge">
+        </div>
+      </div>
+
+
+      <div class="control-group">
+        <!-- Password -->
+        <label class="control-label"  for="password_confirm">Password (Confirm)</label>
+        <div class="controls">
+          <input type="password" id="password_confirm" name="confirm" placeholder="" class="input-xlarge">
+          <p class="help-block">Please confirm password</p>
+        </div>
+      </div>
+
+
+      <div class="control-group">
+        <!-- Button -->
+        <div class="controls">
+          <button class="btn btn-success post-register">Register</button>
+        </div>
+      </div>
+
+
+    </fieldset>
+  </form>
+</div>
+
+
+
+
+
+
+
+
