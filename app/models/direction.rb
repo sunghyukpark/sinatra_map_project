@@ -1,5 +1,5 @@
 class Direction < ActiveRecord::Base
-	has_one :destination
-	has_one :origin
+	belongs_to :origin
+	belongs_to :destionation
 	belongs_to :user
 end

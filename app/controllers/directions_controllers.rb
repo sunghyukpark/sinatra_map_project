@@ -1,16 +1,31 @@
+
+# list all directions of a user
+
 get "/users/:user_id/directions" do
 	@user = User.find(params[:user_id])
-	@directions = Direction.all
+  @direction = Direction.new
+  @origin = Origin.new(address: params[:origin])
+  @destination = Destination.new(address: params[:destination])
+
+  @direction.origin = @origin
+  @direction.destination = @destination  
+
+  @directions = Direction.all
+
 
 	erb :'directions/index'
 end
 
+
+
 # make new direction, associate data from api request
+
 post "/users/:user_id/directions" do
 	@user = User.find(params[:user_id])
 	@direction = Direction.new
-  @origin = Origin.create(address: params[:origin])
-  @destination = Destination.create(address: params[:destination])
+
+  @origin = Origin.new(address: params[:origin])
+  @destination = Destination.new(address: params[:destination])
   @mode = params[:mode]
 
   @direction.origin = @origin
