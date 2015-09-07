@@ -14,15 +14,15 @@ end
 
 post "/users/:user_id/directions" do
 	@user = User.find(params[:user_id])
-  @direction = @user.directions.new
+  @direction = @user.directions.create
 
   @origin = Origin.create(address: params[:origin])
   @destination = Destination.create(address: params[:destination])
   @mode = params[:mode]
 
-  
-
-
+# dir.origin is possible
+  @origin.directions << @direction
+  @destination.directions << @direction
 
 
   direction_client = DirectionsClient.new
@@ -36,6 +36,9 @@ post "/users/:user_id/directions" do
                 origin: @origin.address, 
                 destination: @destination.address, 
                 mode: @mode)[:duration]
+
+  @direction.distance = @distance
+  @direction.duration = @duration
 
 
   if @direction.save

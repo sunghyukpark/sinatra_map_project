@@ -5,8 +5,14 @@
 
 <% if @directions %>
 	<% @directions.each do |direction| %>
-		<div class = "dir-orig-list"><%= direction.origin.address %></div>
-		<div class = "dir-dest-list"><%= direction.destination.address %></div>
+		<div class="dir-wrapper">
+			<div class = "dir-id">Direction #:<%= direction.id %></div>
+			<div class = "dir-orig-list">From: <%= direction.origin.address %></div>
+			<div class = "dir-dest-list">To: <%= direction.destination.address %></div>
+			<div>Duration: <%= direction.duration %></div>
+			<div>Distance: <%= direction.distance %></div>
+			<br>
+		</div>
 	<% end %>
 <% end %>
 

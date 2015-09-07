@@ -1,20 +1,19 @@
 <div class="i-direction-form">
 	<div class='i-direction-inner-form text-center'>
-
+		
 		<form action="/users/<%= @user.id %>/directions" method="post">
+
 			<div class="i-origin-wrapper">
 				<label class="d-label">Origin</label><br>
 				<input name="origin"  class="i-origin" >
 			</div>
 			<br>
 
-
 			<div class="i-destination-wrapper">
 				<label class="d-label">Destination</label><br>
 				<input name="destination"  class="i-destination">
 			</div>
 			<br>
-
 
 			<div class="i-mode-wrapper">
 				<label class="d-label">Mode</label>
@@ -26,11 +25,9 @@
 			</div>
 			<br>
 
-
 			<div class="i-submit">
 			 <button class="btn btn-primary btn-block post-login btn-mid" type="submit">Get direction</button>
 			</div>
-
 
 		</form>
 

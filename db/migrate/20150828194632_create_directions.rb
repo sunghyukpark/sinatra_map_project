@@ -6,6 +6,8 @@ class CreateDirections < ActiveRecord::Migration
       t.string :duration
 
       t.references :user
+      t.references :destination
+      t.references :origin
 
   		t.timestamps null: false
   	

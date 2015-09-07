@@ -4,9 +4,6 @@ class CreateDestinations < ActiveRecord::Migration
   		t.string :name
   		t.string :address
   		
-  		t.references :direction
-			t.references :origin
-
   		t.timestamps null: false
   	end
   end
