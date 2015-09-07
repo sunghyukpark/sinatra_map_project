@@ -20,7 +20,6 @@ post "/users/:user_id/directions" do
   @destination = Destination.create(address: params[:destination])
   @mode = params[:mode]
 
-# dir.origin is possible
   @origin.directions << @direction
   @destination.directions << @direction
 
