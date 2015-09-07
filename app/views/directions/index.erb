@@ -2,11 +2,13 @@
   <%= @form_error %>
 <% end %>
 
+
 <% if @directions %>
 	<% @directions.each do |direction| %>
 		<div class = "dir-orig-list"><%= direction.origin.address %></div>
 		<div class = "dir-dest-list"><%= direction.destination.address %></div>
 	<% end %>
 <% end %>
+
 
 <%= erb :_direction %>

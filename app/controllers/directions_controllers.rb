@@ -5,10 +5,6 @@ get "/users/:user_id/directions" do
 	@user = User.find(params[:user_id])
   @directions = @user.directions
 
-  @origin = Origin.new(address: params[:origin])
-  @destination = Destination.new(address: params[:destination])
-  @direction = @user.directions.new(origin: @origin, destination: @destination)
-
 	erb :'directions/index'
 end
 
@@ -18,17 +14,18 @@ end
 
 post "/users/:user_id/directions" do
 	@user = User.find(params[:user_id])
-	@direction = Direction.new
+  @direction = @user.directions.new
 
-  @origin = Origin.new(address: params[:origin])
-  @destination = Destination.new(address: params[:destination])
+  @origin = Origin.create(address: params[:origin])
+  @destination = Destination.create(address: params[:destination])
   @mode = params[:mode]
 
-  @direction.origin = @origin
-  @direction.destination = @destination
+  
+
+
+
 
   direction_client = DirectionsClient.new
-
 
 
   @distance = direction_client.make_api_request(

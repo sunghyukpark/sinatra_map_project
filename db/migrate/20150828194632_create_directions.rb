@@ -5,8 +5,10 @@ class CreateDirections < ActiveRecord::Migration
   		t.string :distance
       t.string :duration
 
+      t.references :user
+
   		t.timestamps null: false
-  		t.references :user
+  	
   	end
   end
 end

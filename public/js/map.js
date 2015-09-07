@@ -60,33 +60,6 @@ function setTravelMode(mode){
 
 
 
-function initMarker(options){
-	var marker = new google.maps.Marker(options)
-}
-
-
-
-
-
-
-
-
-
-// var directionsDisplay;
-// var directionsService = new google.maps.DirectionsService();
-
-
-
-// function initialize() {
-//   directionsDisplay = new google.maps.DirectionsRenderer();
-//   var chicago = new google.maps.LatLng(41.850033, -87.6500523);
-//   var mapOptions = {
-//     zoom:7,
-//     center: chicago
-//   }
-//   var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-//   directionsDisplay.setMap(map);
-// }
 
 // function calcRoute() {
 //   var start = document.getElementById("start").value;
@@ -102,45 +75,6 @@ function initMarker(options){
 //     }
 //   });
 // }
-
-
-
-//---------- Lecture material ---------------
-
-var dbc = new google.maps.LatLng(37.784532, -122.397152);
-
-
-var directionsDisplayA = new google.maps.DirectionsRenderer(); //draws in a map
-var directionService = new google.maps.DirectionsService(); //makes a request to google api
-
-
-function initMapWithMarker() {
-	var map = new google.maps.Map(document.getElementById('map'), {
-    center: dbc,
-    zoom: 18
-  });
-
-  var marker = new google.maps.Marker({
-    position: dbc,
-    map: map,
-    draggable: true
-  });
-}
-
-
-function generateRouteBetween2Points(directionsDisplay1){
-	var request1 = {
-		origin: generateRandomSFCoords(),
-		destination: generateRandomSFCoords(),
-		travelMode: google.maps.TravelMode.DRIVING
-	};
-
-
-	directionService.route(request1, function(response, status){
-		directionsDisplay1.setDirections(response)
-	});
-
-}
 
 
 // function createMarker(options, html){

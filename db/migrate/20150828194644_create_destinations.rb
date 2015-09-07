@@ -3,8 +3,9 @@ class CreateDestinations < ActiveRecord::Migration
   	create_table :destinations do |t|
   		t.string :name
   		t.string :address
-  		t.references :origin
-  		t.references :destination
+  		
+  		t.references :direction
+			t.references :origin
 
   		t.timestamps null: false
   	end
