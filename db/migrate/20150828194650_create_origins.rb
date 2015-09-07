@@ -3,7 +3,6 @@ class CreateOrigins < ActiveRecord::Migration
   	create_table :origins do |t|
 			t.string :name
 			t.string :address
-			t.references :direction
 
 			t.timestamps null: false
 		end

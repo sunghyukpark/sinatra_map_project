@@ -3,15 +3,11 @@
 
 get "/users/:user_id/directions" do
 	@user = User.find(params[:user_id])
-  @direction = Direction.new
+  @directions = @user.directions
+
   @origin = Origin.new(address: params[:origin])
   @destination = Destination.new(address: params[:destination])
-
-  @direction.origin = @origin
-  @direction.destination = @destination  
-
-  @directions = Direction.all
-
+  @direction = @user.directions.new(origin: @origin, destination: @destination)
 
 	erb :'directions/index'
 end
