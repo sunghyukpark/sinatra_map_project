@@ -3,9 +3,9 @@
 
 $(document).ready(function(){
 
-	var origin = document.getElementById("origin").value
-	var destination = document.getElementById("destination").value
-	var mode = document.getElementById("mode").value
+	var origin = "740 Webster St. San Francisco"
+	var destination = "633 Folsom St. San Francisco"
+	var mode = "driving"
 
 	calcAndDisplayDirection(origin, destination, mode);
 
@@ -18,7 +18,7 @@ function calcAndDisplayDirection(origin, destination, mode) {
   var directionsDisplay = new google.maps.DirectionsRenderer;
   var directionsService = new google.maps.DirectionsService;
 
-  var sf_map = initializeMapOfSanFrancisco();
+  var sf_map = initMapOfSanFrancisco();
 
 	directionsDisplay.setMap(sf_map); 
 
@@ -29,7 +29,8 @@ function calcAndDisplayDirection(origin, destination, mode) {
 
   	function(response, status){
     	if (status === google.maps.DirectionsStatus.OK)
-    		{directionsDisplay.setDirections(response);} 
+    		{directionsDisplay.setDirections(response);
+    			console.log("inside request")} 
     	else {window.alert('Directions request failed due to ' + status);}
   	}
 	);
@@ -37,10 +38,10 @@ function calcAndDisplayDirection(origin, destination, mode) {
 }
 
 
-function initializeMapOfSanFrancisco(){
+function initMapOfSanFrancisco(){
 	var selector = document.getElementById('map');
 	var options = {
-		zoom: 10,
+		zoom: 18,
 		center: {lat:  37.774501, lng: -122.418432}
 	};
 
@@ -55,6 +56,12 @@ function setTravelMode(mode){
 	else if(mode === 'transit')		{return google.maps.TravelMode.TRANSIT}
 	else if(mode === 'bicycling')	{return google.maps.TravelMode.BICYCLING}	
 	else 													{return google.maps.TravelMode.WALKING}
+}
+
+
+
+function initMarker(options){
+	var marker = new google.maps.Marker(options)
 }
 
 
