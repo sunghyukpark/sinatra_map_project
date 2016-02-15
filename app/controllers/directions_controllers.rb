@@ -23,17 +23,16 @@ post "/users/:user_id/directions" do
   @origin.directions << @direction
   @destination.directions << @direction
 
-
   direction_client = DirectionsClient.new
 
 
   @distance = direction_client.make_api_request(
-                origin: @origin.address, 
-                destination: @destination.address, 
+                origin: @origin.address,
+                destination: @destination.address,
                 mode: @mode)[:distance]
 	@duration = direction_client.make_api_request(
-                origin: @origin.address, 
-                destination: @destination.address, 
+                origin: @origin.address,
+                destination: @destination.address,
                 mode: @mode)[:duration]
 
   @direction.distance = @distance

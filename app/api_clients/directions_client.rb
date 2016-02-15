@@ -10,23 +10,19 @@ class DirectionsClient
     origin = args.fetch(:origin)
     destination = args.fetch(:destination)
     mode = args.fetch(:mode)
+    options = { key: ENV['GOOGLE_API_KEY'],
+                      origin: origin,
+                      destination: destination,
+                      mode: mode }
+    response = self.class.get('', query: options)
 
-    response = self.class.get('',
-                              query: {
-                                key: ENV['GOOGLE_API_KEY'],
-                                origin: origin,
-                                destination: destination,
-                                mode: mode
-                              })
     if response.success?
-      json = JSON.parse(response.body)
-      distance = json["routes"][0]["legs"][0]["distance"]["text"]
-      duration = json["routes"][0]["legs"][0]["duration"]["text"]
+      result = JSON.parse(response.body)
+      distance = result["routes"][0]["legs"][0]["distance"]["text"]
+      duration = result["routes"][0]["legs"][0]["duration"]["text"]
       return {distance: distance, duration: duration}
     else
       "Duration Request Failed"
     end
   end
-
-
 end
